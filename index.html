@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Garima Gaur (PT) - Physiotherapist & Wellness Expert</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="login-page" class="login-page hidden">
+        <div class="container">
+            <div class="login-container">
+                <div class="login-card card">
+                    <div class="card__body">
+                        <div class="login-header">
+                            <h2>Admin Login</h2>
+                            <p>Access the admin dashboard</p>
+                        </div>
+                        <form id="login-form" class="login-form">
+                            <div class="form-group">
+                                <label class="form-label">Username</label>
+                                <input type="text" class="form-control" name="username" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-control" name="password" required>
+                            </div>
+                            <div id="login-error" class="error-message hidden"></div>
+                            <button type="submit" class="btn btn--primary btn--full-width">Login</button>
+                        </form>
+                        <div class="login-footer">
+                            <a href="#" id="back-to-public">← Back to Public Site</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="admin-dashboard" class="admin-dashboard hidden">
+        <div class="admin-header">
+            <div class="container">
+                <div class="admin-nav">
+                    <h2>Admin Dashboard</h2>
+                    <div class="admin-nav-items">
+                        <button class="btn btn--outline btn--sm" id="view-public">View Public Site</button>
+                        <button class="btn btn--secondary btn--sm" id="logout-btn">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-content">
+            <div class="container">
+                <div class="admin-grid">
+                    <!-- Settings Panel -->
+                    <div class="admin-card card">
+                        <div class="card__body">
+                            <h3>Site Settings</h3>
+                            <div class="settings-controls">
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <h4>Scheduling System</h4>
+                                        <p>Enable or disable appointment scheduling for patients</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="admin-scheduling-toggle" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <h4>Contact Form</h4>
+                                        <p>Enable or disable the contact form functionality</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="admin-contact-toggle" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="admin-card card">
+                        <div class="card__body">
+                            <h3>Quick Stats</h3>
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <div class="stat-value" id="total-articles">0</div>
+                                    <div class="stat-label">Published Articles</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value" id="scheduling-status">Active</div>
+                                    <div class="stat-label">Scheduling Status</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article Management -->
+                <div class="admin-section">
+                    <div class="section-header">
+                        <h3>Article Management</h3>
+                        <button class="btn btn--primary" id="admin-add-article">Add New Article</button>
+                    </div>
+                    
+                    <div class="articles-table-container">
+                        <div class="articles-table">
+                            <div class="table-header">
+                                <div class="table-cell">Title</div>
+                                <div class="table-cell">Publication</div>
+                                <div class="table-cell">Date</div>
+                                <div class="table-cell">Actions</div>
+                            </div>
+                            <div id="admin-articles-list" class="table-body">
+                                <!-- Articles will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Public Portfolio Website -->
+    <div id="public-site" class="public-site">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-brand">
+                    <h3>Dr. Garima Gaur (PT)</h3>
+                </div>
+                <div class="nav-links">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#linkedin" class="nav-link">Profile</a>
+                    <a href="#my-articles" class="nav-link">Articles</a>
+                    <a href="#recent-articles" class="nav-link">Research</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+                <div class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="admin-link-container">
+                    <a href="#" id="admin-login-link" class="admin-link">Admin</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-nav" class="mobile-nav hidden">
+            <div class="mobile-nav-content">
+                <a href="#home" class="mobile-nav-link">Home</a>
+                <a href="#linkedin" class="mobile-nav-link">Profile</a>
+                <a href="#my-articles" class="mobile-nav-link">Articles</a>
+                <a href="#recent-articles" class="mobile-nav-link">Research</a>
+                <a href="#contact" class="mobile-nav-link">Contact</a>
+                <a href="#" id="mobile-admin-link" class="mobile-nav-link admin">Admin</a>
+            </div>
+        </div>
+
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Dr. Garima Gaur (PT)</h1>
+                        <h2>Physiotherapist & Wellness Expert</h2>
+                        <div class="credentials">
+                            <p><strong>Education:</strong> Masters in Musculoskeletal Sciences and Sports Physiotherapy</p>
+                            <p><strong>Institution:</strong> Manipal College of Health Professions, 2020</p>
+                            <p><strong>Experience:</strong> 5+ Years Experience</p>
+                            <p><strong>Specialization:</strong> Sports and Musculoskeletal Physiotherapy</p>
+                            <p><strong>Location:</strong> Delhi, India</p>
+                        </div>
+                        <div class="description">
+                            <p>Dedicated to empowering patients through functional wellness and evidence-based physiotherapy practice. Specializing in sports injuries, musculoskeletal conditions, and holistic rehabilitation approaches.</p>
+                        </div>
+                        <div class="hero-actions">
+                            <a href="#contact" class="btn btn--primary">Book Consultation</a>
+                            <a href="https://www.linkedin.com/in/dr-garima-gaur-pt-248a62127/" target="_blank" class="btn btn--outline">LinkedIn Profile</a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="profile-placeholder">
+                            <div class="profile-icon">👩‍⚕️</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LinkedIn Section -->
+        <section id="linkedin" class="linkedin-section">
+            <div class="container">
+                <h2>Professional Profile</h2>
+                <div class="linkedin-card card">
+                    <div class="card__body">
+                        <div class="linkedin-header">
+                            <div class="linkedin-avatar">
+                                <div class="profile-icon">👩‍⚕️</div>
+                            </div>
+                            <div class="linkedin-info">
+                                <h3>Dr. Garima Gaur (PT)</h3>
+                                <p>Physiotherapist & Wellness Expert at The Wellness Co.</p>
+                                <p class="location">Delhi, India</p>
+                                <a href="https://www.linkedin.com/in/dr-garima-gaur-pt-248a62127/" target="_blank" class="linkedin-link">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="#0077B5">
+                                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                    </svg>
+                                    Connect on LinkedIn
+                                </a>
+                            </div>
+                        </div>
+                        <div class="linkedin-details">
+                            <div class="detail-section">
+                                <h4>Experience</h4>
+                                <ul>
+                                    <li>Senior Physiotherapist - The Wellness Co. (2022 - Present)</li>
+                                    <li>Sports Physiotherapist - Delhi Sports Clinic (2020 - 2022)</li>
+                                    <li>Clinical Physiotherapist - Max Healthcare (2018 - 2020)</li>
+                                </ul>
+                            </div>
+                            <div class="detail-section">
+                                <h4>Education</h4>
+                                <p>Masters in Musculoskeletal Sciences and Sports Physiotherapy<br>
+                                Manipal College of Health Professions • 2020</p>
+                            </div>
+                            <div class="detail-section">
+                                <h4>Specializations</h4>
+                                <div class="skills">
+                                    <span class="skill-tag">Sports Injury Rehabilitation</span>
+                                    <span class="skill-tag">Musculoskeletal Assessment</span>
+                                    <span class="skill-tag">Movement Analysis</span>
+                                    <span class="skill-tag">Pain Management</span>
+                                    <span class="skill-tag">Manual Therapy</span>
+                                    <span class="skill-tag">Exercise Prescription</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- My Articles Section -->
+        <section id="my-articles" class="articles-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Published Articles</h2>
+                </div>
+                <div class="articles-grid" id="my-articles-grid">
+                    <!-- Articles will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Articles Section -->
+        <section id="recent-articles" class="recent-articles-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Latest in Physiotherapy Research</h2>
+                    <div class="filters">
+                        <select id="category-filter" class="form-control">
+                            <option value="all">All Categories</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Trends">Trends</option>
+                            <option value="Pain Management">Pain Management</option>
+                            <option value="Aquatic Therapy">Aquatic Therapy</option>
+                            <option value="Professional Wellness">Professional Wellness</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="articles-grid" id="recent-articles-grid">
+                    <!-- Recent articles will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Contact & Schedule Appointment</h2>
+                </div>
+                
+                <div class="contact-content" id="contact-content">
+                    <div class="contact-form-container">
+                        <div class="contact-info card">
+                            <div class="card__body">
+                                <h3>Get in Touch</h3>
+                                <div class="contact-details">
+                                    <p><strong>Consultation Fee:</strong> ₹1,000</p>
+                                    <p><strong>Location:</strong> The Wellness Co., Delhi, India</p>
+                                    <p><strong>Email:</strong> dr.garima@thewellnessco.in</p>
+                                    <p><strong>Phone:</strong> +91-9876543210</p>
+                                </div>
+                                <div class="services">
+                                    <h4>Services Offered</h4>
+                                    <div class="service-list">
+                                        <div class="service-item">
+                                            <strong>Sports Injury Rehabilitation</strong>
+                                            <span class="service-duration">60 min - ₹1,200</span>
+                                        </div>
+                                        <div class="service-item">
+                                            <strong>Musculoskeletal Assessment</strong>
+                                            <span class="service-duration">45 min - ₹1,000</span>
+                                        </div>
+                                        <div class="service-item">
+                                            <strong>Wellness Consultation</strong>
+                                            <span class="service-duration">30 min - ₹800</span>
+                                        </div>
+                                        <div class="service-item">
+                                            <strong>Post-Surgical Rehabilitation</strong>
+                                            <span class="service-duration">60 min - ₹1,200</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <form class="contact-form card" id="contact-form">
+                            <div class="card__body">
+                                <h3>Schedule Your Appointment</h3>
+                                <div class="form-group">
+                                    <label class="form-label">Full Name *</label>
+                                    <input type="text" class="form-control" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email *</label>
+                                    <input type="email" class="form-control" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Phone Number *</label>
+                                    <input type="tel" class="form-control" name="phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Service Type</label>
+                                    <select class="form-control" name="service">
+                                        <option value="wellness">Wellness Consultation (₹800)</option>
+                                        <option value="assessment">Musculoskeletal Assessment (₹1,000)</option>
+                                        <option value="sports">Sports Injury Rehabilitation (₹1,200)</option>
+                                        <option value="postsurgical">Post-Surgical Rehabilitation (₹1,200)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Preferred Date</label>
+                                    <input type="date" class="form-control" name="date" min="">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Preferred Time</label>
+                                    <select class="form-control" name="time">
+                                        <option value="09:00">09:00 AM</option>
+                                        <option value="09:30">09:30 AM</option>
+                                        <option value="10:00">10:00 AM</option>
+                                        <option value="10:30">10:30 AM</option>
+                                        <option value="11:00">11:00 AM</option>
+                                        <option value="11:30">11:30 AM</option>
+                                        <option value="12:00">12:00 PM</option>
+                                        <option value="14:00">02:00 PM</option>
+                                        <option value="14:30">02:30 PM</option>
+                                        <option value="15:00">03:00 PM</option>
+                                        <option value="15:30">03:30 PM</option>
+                                        <option value="16:00">04:00 PM</option>
+                                        <option value="16:30">04:30 PM</option>
+                                        <option value="17:00">05:00 PM</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Message/Query</label>
+                                    <textarea class="form-control" name="message" rows="4" placeholder="Please describe your condition or any specific concerns..."></textarea>
+                                </div>
+                                <button type="submit" class="btn btn--primary btn--full-width">Submit Appointment Request</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="scheduling-disabled hidden" id="scheduling-disabled">
+                    <div class="unavailable-card card">
+                        <div class="card__body">
+                            <div class="unavailable-content">
+                                <h3>🚫 Scheduling Currently Unavailable</h3>
+                                <p>Appointment scheduling is temporarily disabled. Please contact us directly for appointments.</p>
+                                <div class="contact-details">
+                                    <p><strong>Email:</strong> dr.garima@thewellnessco.in</p>
+                                    <p><strong>Phone:</strong> +91-9876543210</p>
+                                    <p><strong>WhatsApp:</strong> +91-9876543210</p>
+                                </div>
+                                <div class="contact-buttons">
+                                    <a href="mailto:dr.garima@thewellnessco.in" class="btn btn--primary">Send Email</a>
+                                    <a href="tel:+919876543210" class="btn btn--outline">Call Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h4>Dr. Garima Gaur (PT)</h4>
+                        <p>Physiotherapist & Wellness Expert</p>
+                        <p>Masters in Musculoskeletal Sciences and Sports Physiotherapy</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Contact Information</h4>
+                        <p>The Wellness Co., Delhi, India</p>
+                        <p>dr.garima@thewellnessco.in</p>
+                        <p>+91-9876543210</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Professional Affiliations</h4>
+                        <p>The Wellness Co.</p>
+                        <p>Indian Association of Physiotherapists</p>
+                        <p>Sports Medicine Council</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Dr. Garima Gaur. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Article Modal -->
+    <div id="article-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Add New Article</h3>
+                <button class="modal-close" id="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="article-form">
+                    <div class="form-group">
+                        <label class="form-label">Article Title *</label>
+                        <input type="text" class="form-control" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Publication *</label>
+                        <input type="text" class="form-control" name="publication" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Publication Date *</label>
+                        <input type="date" class="form-control" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Article Link *</label>
+                        <input type="url" class="form-control" name="link" required placeholder="https://example.com/article">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Category</label>
+                        <select class="form-control" name="category">
+                            <option value="Recovery">Recovery</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Lifestyle">Lifestyle</option>
+                            <option value="Research">Research</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control" name="description" rows="3" placeholder="Brief description of the article..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">
+                            <input type="checkbox" name="featured"> Featured Article
+                        </label>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn--outline" id="cancel-btn">Cancel</button>
+                        <button type="submit" class="btn btn--primary">Save Article</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
