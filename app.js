@@ -71,7 +71,7 @@ class PortfolioApp {
     login(username, password) {
         console.log('Attempting login with:', username);
         // Simple authentication - in real app, this would be server-side
-        if (username === 'admin' && password === 'admin123') {
+        if (username === 'admin98127740' && password === 'JSHBDFBFAJHjhksbdfjk1243ahjkfg!@#$%!#%') {
             const sessionData = {
                 user: { username: 'admin', role: 'admin' },
                 timestamp: new Date().getTime()
