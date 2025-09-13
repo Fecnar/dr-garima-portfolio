@@ -449,7 +449,7 @@ class PortfolioApp {
                     this.showSuccessMessage('Successfully logged in!');
                     this.showAdminDashboard();
                 } else {
-                    this.showLoginError(errorDiv, 'Invalid username or password. Use admin/admin123');
+                    this.showLoginError(errorDiv, 'Invalid username or password.');
                 }
             } catch (error) {
                 console.error('Login error:', error);
